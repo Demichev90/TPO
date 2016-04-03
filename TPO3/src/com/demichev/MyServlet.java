@@ -3,6 +3,7 @@ package com.demichev;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -23,7 +24,7 @@ public class MyServlet extends HttpServlet {
 	 */
 	public MyServlet() {
 		super();
-		// TODO Auto-generated constructor stub
+		
 	}
 
 	/**
@@ -32,52 +33,65 @@ public class MyServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 
-		try
-		{
-			//set response like html page
-			response.setContentType("text/html");
+  		try
+  		{
+  			//set response like html page
+  			response.setContentType("text/html");
 
-			PrintWriter out= response.getWriter();
+  			PrintWriter out= response.getWriter();
 
-			//Parsing integers
-			int a1= Integer.parseInt(request.getParameter("n1"));
-			int a2= Integer.parseInt(request.getParameter("n2"));
+  			//Parsing integers
+  			int a1= Integer.parseInt(request.getParameter("n1"));
+  			int a2= Integer.parseInt(request.getParameter("n2"));
 
-			//Printing result (adding to integers a1 and a2)
-			out.println("<h1>Result</h1>"+(a1+a2));
-		}
-		catch(Exception e)
-		{
-			//if we catch not integer exception, show massage and button for retry
-			PrintWriter out= response.getWriter();
-			out.println("This is not an integer");
-			out.println(mistake);
-		}
-	}
+  			int res = a1 + a2;
+  			
+  			request.setAttribute("res",res);
+  			
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		try
-		{
-			//set response like html page
-			response.setContentType("text/html");
-			PrintWriter out= response.getWriter();
+  			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+  			rd.forward(request, response);
+  		}
+  		catch(Exception e)
+  		{
+  			//if we catch not integer exception, show massage and button for retry
+  			PrintWriter out= response.getWriter();
+  			out.println("This is not an integer");
+  			out.println(mistake);
+  		}
+  	}
 
-			//Parsing integers (adding to integers a1 and a2)
-			int a1= Integer.parseInt(request.getParameter("n3"));
-			int a2= Integer.parseInt(request.getParameter("n4"));
+  	/**
+  	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+  	 */
+  	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+  		try
+  		{
+  			//set response like html page
+  			response.setContentType("text/html");
+  			PrintWriter out= response.getWriter();
 
-			out.println("<h1>Result</h1>"+(a1+a2));
-		}
-		catch(Exception e)
-		{
-			//if we catch not integer exception, show massage and button for retry
-			PrintWriter out= response.getWriter();
-			out.println("This is not an integer");
-			out.println(mistake);
-		}
-	}
+  			//Parsing integers (adding to integers a1 and a2)
+  			int a1= Integer.parseInt(request.getParameter("n3"));
+  			int a2= Integer.parseInt(request.getParameter("n4"));
 
-}
+  			//out.println("<h1>Result</h1>"+(a1+a2));
+  			
+  			int res = a1 + a2;
+  			
+  			request.setAttribute("res2",res);
+  			
+
+  			RequestDispatcher rd = request.getRequestDispatcher("/index.jsp");
+  			rd.forward(request, response);
+  		}
+  		catch(Exception e)
+  		{
+  			//if we catch not integer exception, show massage and button for retry
+  			PrintWriter out= response.getWriter();
+  			out.println("This is not an integer");
+  			out.println(mistake);
+  		}
+  	}
+
+  }

@@ -11,14 +11,18 @@
 	<form action="MyServlet" method = "GET">
 		<label>First number: </label> <input type="text" name="n1" /> <br />
 		<label>Second number : </label> <input type="text" name="n2" /> <br />
-		<input type="submit" value="Add" />
+		<input type="submit" value="Add" /><br />
+		<br />Res : <input type="text" name="res" value="${requestScope.res}"/>
+		
 	</form>
 
 	<h1 style="">Addator Post</h1>
 	<form action="MyServlet" method = "POST">
 		<label>First number: </label> <input type="text" name="n3" /> <br />
 		<label>Second number : </label> <input type="text" name="n4" /> <br />
-		<input type="submit" value="Add" />
+		<input type="submit" value="Add" /><br />
+		 <br />Res : <input type="text" name="res2" value="${requestScope.res2}"/>
+		
 	</form>
 </body>
 </html>
