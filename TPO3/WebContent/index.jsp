@@ -8,21 +8,26 @@
 </head>
 <body>
 	<h1 style="">Addator Get</h1>
-	<form action="MyServlet" method = "GET">
+
+	<!-- Get method  -->
+	<form action="MyServlet" method="GET">
 		<label>First number: </label> <input type="text" name="n1" /> <br />
 		<label>Second number : </label> <input type="text" name="n2" /> <br />
-		<input type="submit" value="Add" /><br />
-		<br />Res : <input type="text" name="res" value="${requestScope.res}"/>
-		
+		<input type="submit" value="Add" /><br /> 
+		<br />Res : <input
+		type="text" name="res" value="${requestScope.res}" />
+
 	</form>
 
+	<!-- Post method  -->
 	<h1 style="">Addator Post</h1>
-	<form action="MyServlet" method = "POST">
-		<label>First number: </label> <input type="text" name="n3" /> <br />
-		<label>Second number : </label> <input type="text" name="n4" /> <br />
-		<input type="submit" value="Add" /><br />
-		 <br />Res : <input type="text" name="res2" value="${requestScope.res2}"/>
-		
+	<form action="MyServlet" method="POST">   <!-- Posting to Servlet named MyServlet  -->
+		<label>First number: </label> <input type="text" name="n3" /> <br /> 	<!-- Input for n1 (First number for calculating)  -->
+		<label>Second number : </label> <input type="text" name="n4" /> <br />  <!-- Input for n2 (Second number for calculating)  -->
+		<input type="submit" value="Add" /><br />   <!-- Submiting to Servlet  -->
+		<br />Res :<input 
+			type="text" name="res2" value="${requestScope.res2}" />  <!-- Getting result  -->
+
 	</form>
 </body>
 </html>
